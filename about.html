@@ -1,56 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | My Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #21244b;
+      color: #333;
+    }
+
+    /* === Header & Navbar === */
+    .main-header {
+      background: #111;
+      padding: 1rem 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+    }
+
+    .nav-links li a.active,
+    .nav-links li a:hover {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    /* === Floating Balls (if used as background animation) === */
+    .about-floating-balls {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 0, 255, 0.2);
+      position: absolute;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    /* Add more unique positions */
+    .ball1 { top: 10%; left: 20%; }
+    .ball2 { top: 30%; left: 70%; }
+    .ball3 { top: 60%; left: 40%; }
+    .ball4 { top: 80%; left: 10%; }
+    .ball5 { top: 50%; left: 90%; }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* === About Section === */
+    .about-main {
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-modern-container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      background: rgb(11, 5, 31);
+      border-radius: 10px;
+      padding: 2rem;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .about-modern-photo img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .about-modern-content {
+      max-width: 600px;
+    }
+
+    .about-modern-content h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-modern-content h3 {
+      font-weight: normal;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .about-modern-desc {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-modern-btn {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .about-modern-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .about-modern-social {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .about-accent {
+      color: #007bff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: white;
+    }
+
+    /* === Responsive Styles === */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        position: relative;
+      }
+
+      .about-modern-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-modern-photo img {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .about-modern-socials {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body class="about-bg">
-    <header class="main-header">
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="achievements.html">Achievements</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="about-floating-balls">
-        <div class="ball ball1"></div>
-        <div class="ball ball2"></div>
-        <div class="ball ball3"></div>
-        <div class="ball ball4"></div>
-        <div class="ball ball5"></div>
+  <header class="main-header">
+    <nav>
+      <button class="hamburger" id="hamburger"><i class="fa fa-bars"></i></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="about-floating-balls">
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+    <div class="ball ball4"></div>
+    <div class="ball ball5"></div>
+  </div>
+
+  <main class="about-main about-modern">
+    <div class="about-modern-container">
+      <div class="about-modern-photo">
+        <img src="sona.png" alt="Sona" class="about-modern-img" />
+      </div>
+      <div class="about-modern-content">
+        <h2>Hi, all I’m <span class="about-accent">Sona</span></h2>
+        <h3>Web Developer, Logo and Poster Designer.</h3>
+        <p class="about-modern-desc">
+          Experienced web developer, logo and poster designer with a strong background in developing and designing for a diverse clientele. 2+ years of experience includes web development with HTML, CSS, JavaScript, WordPress, ReactJs, Bootstrap and Figma, programming, debugging, and UI/UX designing.
+        </p>
+        <a href="#" class="about-modern-btn">Hire Me</a>
+      </div>
+      <div class="about-modern-socials">
+        <a href="#" class="about-modern-social"><i class="fa fa-github"></i></a>
+        <a href="#" class="about-modern-social"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="about-modern-social"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="about-modern-social"><i class="fa fa-envelope"></i></a>
+      </div>
     </div>
-    <main class="about-main about-modern">
-        <div class="about-modern-container">
-            <div class="about-modern-photo">
-                <img src="sona.png" alt="Sona" class="about-modern-img">
-            </div>
-            <div class="about-modern-content">
-                <h2>Hi, all I’m <span class="about-accent">Sona</span></h2>
-                <h3>Web Developer, Logo and Poster Designer.</h3>
-                <p class="about-modern-desc">
-                    Experienced web developer, logo and poster designer with a strong background in developing and designing for a diverse clientele. 2+ years of experience includes web development with HTML, CSS, JavaScript, WordPress, ReactJs, Bootstrap and Figma, programming, debugging, and UI/UX designing. Received ECDA+ experience scores on every web application built.
-                </p>
-                <a href="#" class="about-modern-btn">Hire Me</a>
-            </div>
-            <div class="about-modern-socials">
-                <a href="#" class="about-modern-social"><i class="fa fa-github"></i></a>
-                <a href="#" class="about-modern-social"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="about-modern-social"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="about-modern-social"><i class="fa fa-envelope"></i></a>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
-    </footer>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>

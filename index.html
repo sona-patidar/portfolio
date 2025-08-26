@@ -154,38 +154,35 @@ footer {
   color: #007BFF;
 }
 
-/* ------------------ */
-/* 📱 Responsive Media Queries */
-/* ------------------ */
+
+/* 🔽 Mobile styles */
 @media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .services-list {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .service-card {
-    width: 90%;
+  .hamburger {
+    display: block;
   }
 
   .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background-color: #111;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    display: none;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
   }
 }
+
 </style>
 </head>
 <body class="home-bg">
@@ -251,6 +248,15 @@ footer {
     <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
+<script>
+    // Toggle mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+
+</script>
 </body>
 </html> 

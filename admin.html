@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="admin-login" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:#181828;">
+        <h2 style="color:#fff;">Admin Login</h2>
+        <input type="password" id="admin-password" placeholder="Enter password" style="padding:0.7em 1em;border-radius:8px;border:1.5px solid #7c3aed44;background:#23233a;color:#fff;font-size:1em;margin-bottom:1em;outline:none;">
+        <button onclick="checkAdminPassword()" style="background:#7c3aed;color:#fff;font-weight:700;border:none;border-radius:8px;padding:0.7em 1.5em;cursor:pointer;">Login</button>
+        <div id="admin-login-error" style="color:#ff4c4c;margin-top:1em;display:none;">Incorrect password. Try again.</div>
+    </div>
+    <div id="admin-panel" style="display:none;">
+        <header class="main-header">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="contact-btn">Contact Me</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="admin-main">
+            <h1>Admin Panel</h1>
+            <section class="admin-section">
+                <h2>Add Project</h2>
+                <form id="project-form">
+                    <input type="text" id="project-title" placeholder="Project Title" required>
+                    <select id="project-category" required>
+                        <option value="Web App Development">Web App Development</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="file" id="project-image-file" accept="image/*" required>
+                    <input type="url" id="project-demo" placeholder="Demo Link (URL)" required>
+                    <input type="text" id="project-tech" placeholder="Technologies Used (comma separated)" required>
+                    <button type="submit">Add Project</button>
+                </form>
+                <div id="admin-project-list"></div>
+                <div id="project-added-msg" style="display:none;margin-top:1em;color:#c6ff00;font-weight:600;">
+                    Project added! <a href="projects.html" style="color:#7c3aed;text-decoration:underline;">View Projects</a>
+                </div>
+            </section>
+            <section class="admin-section">
+                <h2>Add Skill</h2>
+                <form id="skill-form">
+                    <input type="text" id="skill-name" placeholder="Skill Name" required>
+                    <input type="text" id="skill-level" placeholder="Level (e.g., Beginner, Expert, 80)" required>
+                    <input type="text" id="skill-desc" placeholder="Skill Description (optional)">
+                    <button type="submit">Add Skill</button>
+                </form>
+                <div id="admin-skill-list"></div>
+            </section>
+            <section class="admin-section">
+                <h2>Add Certificate</h2>
+                <form id="certificate-form">
+                    <input type="text" id="certificate-title" placeholder="Certificate Title" required>
+                    <input type="text" id="certificate-desc" placeholder="Certificate Description" required>
+                    <input type="file" id="certificate-image-file" accept="image/*" required>
+                    <button type="submit">Add Certificate</button>
+                </form>
+                <div id="admin-certificate-list"></div>
+            </section>
+        </main>
+    </div>
+    <script>
+    function checkAdminPassword() {
+        var pass = document.getElementById('admin-password').value;
+        if (pass === 'sonu2005') {
+            document.getElementById('admin-login').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+        } else {
+            document.getElementById('admin-login-error').style.display = 'block';
+        }
+    }
+    document.getElementById('admin-password').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') checkAdminPassword();
+    });
+    </script>
+    <script>
+window.addEventListener('storage', function(e) {
+    if (e.key === 'projects') {
+        if (window.location.pathname.endsWith('projects.html')) {
+            window.location.reload();
+        }
+    }
+});
+</script>
+</body>
+</html> 

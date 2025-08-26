@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="projects-bg">
+    <header class="main-header">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="projects-main dark-bg">
+        <h1 class="projects-title">My Projects</h1>
+        <p class="projects-subtitle">Some Of My Distinguished Works</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://img.freepik.com/free-vector/library-interior-bookshelves-with-books_107791-9917.jpg" alt="Library Management System" class="project-image">
+                <div class="project-category webapp">Web App Development</div>
+                <div class="project-name">Library Management System</div>
+            </div>
+            <div class="project-card">
+                <img src="https://img.freepik.com/free-vector/weather-concept-illustration_114360-1246.jpg" alt="Weather Forecasting App" class="project-image">
+                <div class="project-category webapp">Web App Development</div>
+                <div class="project-name">Weather Forecasting App</div>
+            </div>
+            <div class="project-card">
+                <img src="https://img.freepik.com/free-photo/group-puppies_155003-10869.jpg" alt="Dog's Breed Classification" class="project-image">
+                <div class="project-category ml">Machine Learning</div>
+                <div class="project-name">Dog's Breed Classification</div>
+            </div>
+            <div class="project-card">
+                <img src="https://img.freepik.com/free-photo/house-model-coins-stack-table_1150-11013.jpg" alt="Boston House Price Prediction" class="project-image">
+                <div class="project-category ml">Machine Learning</div>
+                <div class="project-name">Boston House Price Prediction</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+    <script src="script.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.projects-grid');
+
+    db.collection('projects').get().then(snapshot => {
+        snapshot.forEach(doc => {
+            const proj = doc.data();
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <img src="${proj.imageBase64}" alt="${proj.title}" class="project-image">
+                <div class="project-category">${proj.category}</div>
+                <div class="project-name">${proj.title}</div>
+            `;
+            grid.appendChild(card);
+        });
+    });
+});
+
+    </script>
+</body>
+</html> 

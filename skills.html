@@ -5,20 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Navbar styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+  background-color: #333;
+  border-radius: 4px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Skills circles container */
+.skills-circles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+/* Example skill circle */
+.skill-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+  
+  .nav-links.show {
+    display: flex;
+  }
+
+  .skills-circles {
+    grid-template-columns: 1fr; /* single column on mobile */
+  }
+}
+
+</style>
 </head>
 <body class="skills-bg">
-    <header class="main-header">
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="skills.html" class="active">Skills</a></li>
-                <li><a href="achievements.html">Achievements</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="main-header">
+  <nav>
+    <button class="hamburger" id="hamburger">
+      <i class="fa fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="skills-circles">
+  <div class="skill-circle">HTML</div>
+  <div class="skill-circle">CSS</div>
+  <div class="skill-circle">JavaScript</div>
+  <div class="skill-circle">React</div>
+  <div class="skill-circle">Node.js</div>
+</div>
+
     <main class="skills-main dark-bg">
         <h1 class="skills-title">My Skills</h1>
         <div class="skills-circles"></div>
@@ -27,5 +128,16 @@
         <p>&copy; 2024 My Portfolio. All rights reserved.</p>
     </footer>
     <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+});
+
+    </script>
 </body>
 </html> 

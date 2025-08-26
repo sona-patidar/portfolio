@@ -183,7 +183,7 @@ footer {
 
     .nav-links {
         position: absolute;
-        top: 60px;
+        top: 10px;
         left: 0;
         width: 100%;
         background: #111;
@@ -286,13 +286,15 @@ footer {
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  }
 });
 
 </script>

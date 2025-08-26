@@ -199,7 +199,7 @@ footer {
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 1rem 0;
+       
     }
 
     .hero-section {
@@ -219,6 +219,71 @@ footer {
         width: 90%;
     }
 }
+/* === Sidebar Styles === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background: #111;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 60px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.sidebar-links li {
+    border-bottom: 1px solid #444;
+}
+
+.sidebar-links li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar-links li a:hover,
+.sidebar-links li a.active {
+    background: #333;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hide original nav-links on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: white;
+    }
+}
 
     </style>
 </head>
@@ -228,14 +293,19 @@ footer {
               <button class="hamburger" id="hamburger">
             <i class="fa fa-bars"></i>
         </button>
-  <ul class="nav-links" id="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="achievements.html">Achievements</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
+    <div class="sidebar" id="sidebar">
+      <button class="close-btn" id="closeSidebar">
+        &times;
+      </button>
+      <ul class="sidebar-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
         </nav>
     </header>
     <main class="hero-section">
@@ -286,7 +356,7 @@ footer {
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
 <script>
- document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
 
@@ -297,6 +367,32 @@ footer {
   }
 });
 
+
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    // Open sidebar
+    hamburger.addEventListener("click", () => {
+        sidebar.classList.add("open");
+    });
+
+    // Close sidebar
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+    });
+
+    // Optional: close sidebar on clicking a link
+    document.querySelectorAll(".sidebar-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+        });
+    });
+});
+</script>
+
 </body>
 </html> 
